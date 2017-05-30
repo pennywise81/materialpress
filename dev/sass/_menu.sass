@@ -1,0 +1,122 @@
+/* Menu Styling start */
+
+$base-color-1: #3b3b3b !default
+$base-color-2: #f7f7f7 !default
+$transition-timing: .3s !default
+
+nav.menu
+  margin: 0 -1rem
+  @include clearfix
+  @media all and (min-width: $bp-xxl)
+    margin: 0
+  ul
+    list-style-type: none
+    @include clearfix
+
+  a
+    /* test */
+    border-bottom: 1px solid darken($base-color-2, 60)
+    color: darken($base-color-2, 30)
+    display: block
+    font-family: 'ralewaylight'
+    font-size: .75rem
+    padding: 12px
+    text-decoration: none
+    text-transform: uppercase
+
+  .menu__head
+    @include clearfix
+
+  .menu__btn-toggle
+    float: right
+    outline: none
+    padding: 6px
+
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after
+    background-color: darken($base-color-2, 30)
+
+.menu__items
+  background-color: $base-color-1
+  max-height: 0
+  overflow: hidden
+  transition: max-height $transition-timing
+  .menu--open &
+    max-height: 300px
+    overflow: auto
+
+.menu__items__wrapper > ul > li > a
+
+/* second level padding */
+.menu__items__wrapper > ul > li > ul > li > a
+  padding-left: 24px
+
+/* third level padding */
+.menu__items__wrapper > ul > li > ul > li > ul a
+  padding-left: 36px
+
+/* Desktop/tablet styles */
+@media all and (min-width: $bp-l)
+  nav.menu
+    .menu__items
+      background-color: transparent
+      float: right
+      max-height: none
+      overflow: visible
+
+    .menu__items__wrapper
+      @include clearfix
+
+    a
+      border-bottom: none
+
+  .menu__items__wrapper > ul > li
+    float: left
+    position: relative
+
+    > ul
+      // display: none
+      background: $base-color-1
+      margin-left: -100px
+      opacity: 0
+      position: absolute
+      left: 50%
+      top: 100%
+      /* TRANSITION DELAY IS AWESOME!!1 */
+      transition: opacity $transition-timing 0s, visibility 0s $transition-timing
+      visibility: hidden
+      width: 200px
+      &:before
+        border-color: transparent transparent $base-color-1 transparent
+        border-style: solid
+        border-width: 6px
+        content: ''
+        display: block
+        height: 0
+        left: 50%
+        margin-left: -3px
+        pointer-events: none
+        position: absolute
+        top: -12px
+        width: 0
+      li a
+        border-bottom: 1px solid darken($base-color-2, 60)
+
+    &:hover, &.hover
+      > ul
+        // display: block
+        box-shadow: 10px 10px 30px 0px rgba($base-color-1, .5)
+        opacity: 1
+        transition-delay: 0s, 0s
+        visibility: visible
+
+  .menu__btn-toggle
+    display: none
+
+  .menu__items__wrapper > ul > li > ul > li > a,
+  .menu__items__wrapper > ul > li > ul > li > ul a
+    /* second + third level padding */
+    padding-left: 12px
+
+/* Menu styling end

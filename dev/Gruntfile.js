@@ -5,22 +5,7 @@ module.exports = function (grunt) {
             options: {
                 mangle: true
             },
-            vendorScripts: {
-                options: {
-                    compress: false,
-                    mangle: false
-                },
-                files: [
-                    {
-                        src: 'node_modules/jquery/dist/jquery.min.js',
-                        dest: '../js/jquery.js'
-                    },
-                    {
-                        src: 'node_modules/tether/dist/js/tether.min.js',
-                        dest: '../js/tether.js'
-                    }
-                ]
-            },
+            vendorScripts: {},
             customScripts: {
                 src: ['js-src/**/*.js'],
                 dest: '../js/all.js'
